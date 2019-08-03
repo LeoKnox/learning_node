@@ -1,8 +1,13 @@
-let http = require('http')
-let fs = require('fs')
-let index = fs.readFileSync('index.html')
+var express = require('express')
+var app = express()
+app.set('view engine', 'ejs')
 
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'})
-    res.end(index)
-}).listen(3000)
+app.get('/', function(req, res) {
+    res.render("index")
+})
+
+app.post('/send', function(req, res) {
+    console.log('hello ')
+})
+
+app.listen(3000)
